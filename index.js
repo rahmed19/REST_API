@@ -10,6 +10,8 @@
 //         })
 // }
 
-fetch('https://dog.ceo/api/breeds/image/random')
+fetch('https://apis.scrimba.com/bored/api/activity')
     .then(response => response.json())
-    .then(data => console.log(data));
+    .then(data => {
+        document.getElementById("idea").innerHTML = data.activity
+    });
