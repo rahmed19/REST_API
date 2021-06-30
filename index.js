@@ -10,8 +10,12 @@
 //         })
 // }
 
-fetch('https://apis.scrimba.com/bored/api/activity')
-    .then(response => response.json())
-    .then(data => {
-        document.getElementById("idea").innerHTML = data.activity
-    });
+document.getElementById("bored-bot").addEventListener("click", getIdea)
+
+function getIdea() {
+    fetch('https://apis.scrimba.com/bored/api/activity')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("idea").innerHTML = data.activity
+        });
+}
