@@ -65,7 +65,7 @@ function renderPosts() {
         <hr />
     `
     }
-    document.getElementById("blog-list").innerHTML += html
+    document.getElementById("blog-list").innerHTML = html
 
 
 }
@@ -96,6 +96,9 @@ form.addEventListener('submit', (e) => {
         .then(res => res.json())
         .then(data => {
             postsArray.unshift(data)
+            // title.value = ""
+            // body.value = ""
+            form.reset()
             renderPosts()
         })
 })
