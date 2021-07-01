@@ -54,9 +54,16 @@ fetch('https://apis.scrimba.com/jsonplaceholder/posts')
     .then(res => res.json())
     .then(data => {
         const arr = data.slice(0, 10)
-        arr.map((item => {
-            return document.getElementById('blog-list').innerHTML = item.title
-        }))
+        let html = ""
+        for (let post of arr) {
+            html += `
+                <h3>${post.title}</h3>
+                <p>${post.body}</h3>
+            `
+        }
+        document.getElementById("blog-list").innerHTML = html
     })
+
+
 
 
