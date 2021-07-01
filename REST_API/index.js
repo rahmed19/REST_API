@@ -5,6 +5,6 @@
  * Endpoint: ??? (Check JSON Placeholder docs: https://jsonplaceholder.typicode.com/guide/ and look for the "Listing nested resources" section)
  */
 
-fetch("https://apis.scrimba.com/jsonplaceholder/posts/2")
+fetch("https://apis.scrimba.com/openweathermap/data/2.5/weather?q=vancouver")
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(data => console.log(data.city))
