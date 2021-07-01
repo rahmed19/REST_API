@@ -50,6 +50,18 @@
 //         })
 // })
 
+const form = document.getElementById('new-post')
+const title = document.getElementById('post-title')
+const body = document.getElementById('post-body')
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    const data = {
+        title: title,
+        body: body
+    }
+})
+
 fetch('https://apis.scrimba.com/jsonplaceholder/posts')
     .then(res => res.json())
     .then(data => {
@@ -59,6 +71,7 @@ fetch('https://apis.scrimba.com/jsonplaceholder/posts')
             html += `
                 <h3>${post.title}</h3>
                 <p>${post.body}</h3>
+                <hr />
             `
         }
         document.getElementById("blog-list").innerHTML = html
