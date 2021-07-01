@@ -54,14 +54,6 @@ const form = document.getElementById('new-post')
 const title = document.getElementById('post-title')
 const body = document.getElementById('post-body')
 
-form.addEventListener('submit', (e) => {
-    e.preventDefault()
-    const data = {
-        title: title,
-        body: body
-    }
-})
-
 fetch('https://apis.scrimba.com/jsonplaceholder/posts')
     .then(res => res.json())
     .then(data => {
@@ -69,13 +61,42 @@ fetch('https://apis.scrimba.com/jsonplaceholder/posts')
         let html = ""
         for (let post of arr) {
             html += `
-                <h3>${post.title}</h3>
-                <p>${post.body}</h3>
-                <hr />
-            `
+            <h3>${post.title}</h3>
+            <p>${post.body}</h3>
+            <hr />
+        `
         }
         document.getElementById("blog-list").innerHTML = html
     })
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    const data = {
+        title: title.value,
+        body: body.value
+    }
+
+    const options = {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    }
+
+    fetch('https://apis.scrimba.com/jsonplaceholder/posts', options)
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById("blog-list").innerHTML += `
+                <h3>${data.title}</h3>
+                <p>${data.body}</h3>
+                <hr />
+            `
+        })
+})
+
+
+
 
 
 
